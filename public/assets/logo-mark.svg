@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Top Obsidian Plum Leaf -->
+  <path d="M45 20 C25 20 20 40 20 60 C35 55 45 42 45 20 Z" fill="#292330"/>
+  <!-- Center Oxidised Copper Seed -->
+  <circle cx="54" cy="38" r="9" fill="#B86F52"/>
+  <!-- Bottom Celadon Mist Leaf -->
+  <path d="M30 68 C30 52 45 45 60 45 C60 65 52 80 30 68 Z" fill="#8EA68C"/>
+</svg>

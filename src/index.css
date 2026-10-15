@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #292330;
+  --color-secondary: #C7D8C5;
+  --color-tertiary: #B86F52;
+  --color-neutral: #F3EBDD;
+  --color-chalk: #FAF6F0;
+}
+
+@layer base {
+  body {
+    background-color: #F3EBDD;
+    color: #292330;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Financial numbers always use tabular figures to avoid layout jitter */
+  .tnum {
+    font-feature-settings: "tnum" 1;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom Botanical & Mineral Range Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+/* Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(41, 35, 48, 0.15);
+  height: 6px;
+  border-radius: 9999px;
+}
+
+input[type="range"]::-moz-range-track {
+  background: rgba(41, 35, 48, 0.15);
+  height: 6px;
+  border-radius: 9999px;
+}
+
+/* Thumb - 18px circle in Obsidian Plum with Porcelain Sand inner ring */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -6px;
+  background-color: #292330;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 3px solid #FAF6F0;
+  box-shadow: 0 2px 6px rgba(41, 35, 48, 0.25);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background-color: #292330;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  border: 3px solid #FAF6F0;
+  box-shadow: 0 2px 6px rgba(41, 35, 48, 0.25);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+  background-color: #B86F52;
+}
+
+input[type="range"]:active::-moz-range-thumb {
+  transform: scale(1.15);
+  background-color: #B86F52;
+}
+
+/* Mineral card subtle hover effect */
+.moneta-card {
+  background-color: #FAF6F0;
+  border: 1px solid rgba(41, 35, 48, 0.1);
+  border-radius: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.moneta-card:hover {
+  border-color: rgba(41, 35, 48, 0.2);
+  box-shadow: 0 8px 24px -4px rgba(41, 35, 48, 0.06);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F3EBDD;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(41, 35, 48, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(41, 35, 48, 0.4);
+}
