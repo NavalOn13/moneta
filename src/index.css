@@ -115,3 +115,65 @@ input[type="range"]:active::-moz-range-thumb {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(41, 35, 48, 0.4);
 }
+@keyframes landing-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes landing-draw {
+  from { stroke-dashoffset: 820; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes landing-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes landing-area {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.landing-reveal {
+  animation: landing-rise 700ms cubic-bezier(.2,.75,.25,1) both;
+}
+
+.landing-reveal-late {
+  animation-delay: 130ms;
+}
+
+.chart-line {
+  stroke-dasharray: 820;
+  stroke-dashoffset: 820;
+  animation: landing-draw 1.6s cubic-bezier(.22,.75,.25,1) 350ms forwards;
+}
+
+.chart-area {
+  opacity: 0;
+  animation: landing-area 900ms ease-out 900ms forwards;
+}
+
+.chart-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: landing-float 3.4s ease-in-out 1.8s infinite;
+}
+
+.float-card {
+  animation: landing-float 4.5s ease-in-out .8s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-reveal,
+  .landing-reveal-late,
+  .chart-line,
+  .chart-area,
+  .chart-dot,
+  .float-card {
+    animation: none !important;
+  }
+
+  .chart-line { stroke-dashoffset: 0; }
+  .chart-area { opacity: 1; }
+}
