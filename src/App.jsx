@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import LandingScreen from './screens/LandingScreen';
 import OverviewScreen from './screens/OverviewScreen';
 import LearnScreen from './screens/LearnScreen';
 import PlanScreen from './screens/PlanScreen';
@@ -9,7 +10,7 @@ import WhatIfScreen from './screens/WhatIfScreen';
 import JourneyScreen from './screens/JourneyScreen';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState('landing');
 
   // Shared application state for Aarav
   const [userProfile, setUserProfile] = useState({
@@ -35,9 +36,12 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
 
+  if (activeTab === 'landing') {
+    return <LandingScreen onEnter={() => setActiveTab('overview')} />;
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F3EBDD] text-[#292330] font-sans antialiased">
-      {/* Top Navigation Bar with live state */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -45,60 +49,27 @@ export default function App() {
         goalTarget={planState.targetCorpus}
       />
 
-      {/* Main Content Workspace */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         {activeTab === 'overview' && (
-          <OverviewScreen
-            onNavigate={setActiveTab}
-            userProfile={userProfile}
-            planState={planState}
-          />
+          <OverviewScreen onNavigate={setActiveTab} userProfile={userProfile} planState={planState} />
         )}
-
         {activeTab === 'learn' && (
-          <LearnScreen
-            onNavigate={setActiveTab}
-            userProfile={userProfile}
-          />
+          <LearnScreen onNavigate={setActiveTab} userProfile={userProfile} />
         )}
-
         {activeTab === 'plan' && (
-          <PlanScreen
-            onNavigate={setActiveTab}
-            userProfile={userProfile}
-            planState={planState}
-            setPlanState={setPlanState}
-          />
+          <PlanScreen onNavigate={setActiveTab} userProfile={userProfile} planState={planState} setPlanState={setPlanState} />
         )}
-
         {activeTab === 'journey' && (
-          <JourneyScreen
-            onNavigate={setActiveTab}
-            userProfile={userProfile}
-            planState={planState}
-            setPlanState={setPlanState}
-          />
+          <JourneyScreen onNavigate={setActiveTab} userProfile={userProfile} planState={planState} setPlanState={setPlanState} />
         )}
-
         {activeTab === 'stress' && (
-          <StressTestScreen
-            onNavigate={setActiveTab}
-            userProfile={userProfile}
-            planState={planState}
-          />
+          <StressTestScreen onNavigate={setActiveTab} userProfile={userProfile} planState={planState} />
         )}
-
         {activeTab === 'whatif' && (
-          <WhatIfScreen
-            onNavigate={setActiveTab}
-            userProfile={userProfile}
-            planState={planState}
-            setPlanState={setPlanState}
-          />
+          <WhatIfScreen onNavigate={setActiveTab} userProfile={userProfile} planState={planState} setPlanState={setPlanState} />
         )}
       </main>
 
-      {/* Global Footer with Regulatory Compliance */}
       <Footer onNavigate={setActiveTab} />
     </div>
   );
